@@ -9,6 +9,7 @@ const Blog = require("./models/blog");
 
 const userRoute = require("./routes/user");
 const blogRoute = require("./routes/blog");
+const methodOverride = require("method-override");
 
 const {
   checkForAuthenticationCookie,
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookiePaser());
 app.use(checkForAuthenticationCookie("token"));
 app.use(express.static(path.resolve("./public")));
+app.use(methodOverride("_method"));
 
 app.get("/", async (req, res) => {
   const allBlogs = await Blog.find({});
