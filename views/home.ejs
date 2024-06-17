@@ -16,11 +16,15 @@
             <div class="card-body">
               <h5 class="card-title"><%= blog.title %></h5>
               <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
-              <!-- Delete Button Form -->
+              <!-- Edit Button -->
+              <a href="/blog/edit/<%= blog._id %>" class="btn btn-secondary"
+                >Edit</a
+              >
 
+              <!-- Delete Button Form -->
               <form
                 method="POST"
-                action="/blog/delete/<%=blog.title %>?_method=DELETE"
+                action="/blog/delete/<%= encodeURIComponent(blog.title) %>?_method=DELETE"
                 style="display: inline"
               >
                 <button type="submit" class="btn btn-danger">Delete</button>
